@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>北京五一旅行攻略</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --vermillion: #C0392B;
+    --gold: #D4A017;
+    --deep-red: #8B0000;
+    --ink: #1A1A2E;
+    --cream: #FAF6F0;
+    --warm-white: #FDF8F2;
+    --light-gold: #F5E6C8;
+    --muted: #6B5B4E;
+    --border: rgba(192, 57, 43, 0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://commons.wikimedia.org/wiki/Special:FilePath/The_Forbidden_City_-_View_from_Coal_Hill.jpg?width=1600');
+    background-size: cover;
+    background-position: center 40%;
+    filter: brightness(0.55) saturate(1.2);
+    transform: scale(1.05);
+    animation: heroZoom 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroZoom {
+    from { transform: scale(1.05); }
+    to { transform: scale(1.12); }
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(26,26,46,0.2) 0%,
+      rgba(139,0,0,0.1) 40%,
+      rgba(26,26,46,0.7) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    padding: 2rem;
+    animation: fadeUp 1.2s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag {
+    display: inline-block;
+    border: 1px solid rgba(212,160,23,0.8);
+    color: var(--gold);
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    padding: 6px 20px;
+    margin-bottom: 1.5rem;
+    font-family: 'Noto Sans SC';
+    font-weight: 400;
+  }
+
+  .hero h1 {
+    font-family: 'ZCOOL XiaoWei', serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    line-height: 1;
+    letter-spacing: 0.15em;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-sub {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.3em;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-dates {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .hero-dates span { color: var(--gold); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    animation: bounce 2s infinite;
+  }
+
+  .hero-welcome {
+    font-family: 'ZCOOL XiaoWei', serif;
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    color: rgba(255,255,255,0.92);
+    letter-spacing: 0.25em;
+    margin-bottom: 2rem;
+    margin-top: 0.8rem;
+    line-height: 1.6;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+    border-top: 1px solid rgba(212,160,23,0.4);
+    border-bottom: 1px solid rgba(212,160,23,0.4);
+    padding: 0.6rem 1.5rem;
+    display: inline-block;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ─── SECTION LAYOUT ─── */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 40px;
+    height: 2px;
+    background: var(--vermillion);
+  }
+
+  .section-label h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .section-label .day-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(192,57,43,0.06);
+    position: absolute;
+    right: 2rem;
+    top: -1rem;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* ─── DAY HEADER ─── */
+  .day-header {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    height: 280px;
+    margin-bottom: 3rem;
+  }
+
+  .day-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .day-header:hover img { transform: scale(1.04); }
+
+  .day-header-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(26,26,46,0.85) 0%, rgba(26,26,46,0.2) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.5rem;
+    color: #fff;
+  }
+
+  .day-badge {
+    display: inline-block;
+    background: var(--vermillion);
+    color: #fff;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    padding: 4px 12px;
+    margin-bottom: 0.8rem;
+    width: fit-content;
+  }
+
+  .day-header-overlay h2 {
+    font-family: 'ZCOOL XiaoWei', serif;
+    font-size: 2.4rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .day-header-overlay p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline {
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--vermillion), var(--gold), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideIn 0.6s ease forwards;
+  }
+
+  .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+  .timeline-item:nth-child(2) { animation-delay: 0.25s; }
+  .timeline-item:nth-child(3) { animation-delay: 0.4s; }
+  .timeline-item:nth-child(4) { animation-delay: 0.55s; }
+  .timeline-item:nth-child(5) { animation-delay: 0.7s; }
+
+  @keyframes slideIn {
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -2.65rem;
+    top: 5px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  .dot-attraction { background: var(--vermillion); color: #fff; }
+  .dot-food { background: var(--gold); color: var(--ink); }
+  .dot-transport { background: var(--ink); color: #fff; }
+
+  .timeline-time {
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .card:hover {
+    box-shadow: 0 12px 40px rgba(192,57,43,0.12);
+    transform: translateY(-3px);
+  }
+
+  .card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .card:hover .card-image { transform: scale(1.04); }
+  .card-overflow { overflow: hidden; }
+
+  .card-body {
+    padding: 1.4rem;
+  }
+
+  .card-type {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    padding: 3px 10px;
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+
+  .type-attraction { background: rgba(192,57,43,0.1); color: var(--vermillion); }
+  .type-food { background: rgba(212,160,23,0.15); color: #96740D; }
+  .type-transport { background: rgba(26,26,46,0.08); color: var(--ink); }
+
+  .card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+
+  .card p {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  .card-meta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.9rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .card-meta span { display: flex; align-items: center; gap: 4px; }
+
+  /* ─── GRID ─── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  @media (max-width: 768px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  /* ─── FOOD SECTION ─── */
+  .food-section {
+    background: var(--light-gold);
+    padding: 3rem 2.5rem;
+    border-left: 4px solid var(--gold);
+    margin: 2.5rem 0;
+  }
+
+  .food-section h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .food-card {
+    background: #fff;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+
+  .food-card:hover { box-shadow: 0 8px 24px rgba(212,160,23,0.2); }
+
+  .food-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+  }
+
+  .food-card:hover img { transform: scale(1.05); }
+
+  .food-card-body {
+    padding: 0.9rem;
+  }
+
+  .food-card h4 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: var(--ink);
+  }
+
+  .food-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+
+  /* ─── TRANSPORT BOX ─── */
+  .transport-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(26,26,46,0.04);
+    border: 1px solid rgba(26,26,46,0.1);
+    padding: 1rem 1.4rem;
+    margin: 1.5rem 0;
+    font-size: 0.83rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .transport-box .icon {
+    font-size: 1.3rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 4rem 0;
+  }
+
+  /* ─── ALTERNATIVES ─── */
+  .alternatives-section {
+    background: var(--ink);
+    color: #fff;
+    padding: 6rem 2rem;
+  }
+
+  .alt-inner { max-width: 1100px; margin: 0 auto; }
+
+  .alt-tag {
+    display: inline-block;
+    border: 1px solid rgba(212,160,23,0.5);
+    color: var(--gold);
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    padding: 5px 16px;
+    margin-bottom: 1.2rem;
+  }
+
+  .alt-title {
+    font-family: 'ZCOOL XiaoWei', serif;
+    font-size: 2.5rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.6rem;
+  }
+
+  .alt-desc {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.9rem;
+    margin-bottom: 3rem;
+    letter-spacing: 1px;
+  }
+
+  .alt-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+
+  .alt-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: border-color 0.3s;
+  }
+
+  .alt-card:hover { border-color: var(--gold); }
+
+  .alt-card-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.7) saturate(0.9);
+    transition: filter 0.4s, transform 0.5s;
+  }
+
+  .alt-card:hover .alt-card-img { filter: brightness(0.85) saturate(1.1); transform: scale(1.04); }
+
+  .alt-card-img-wrap { overflow: hidden; }
+
+  .alt-card-body { padding: 1.5rem; }
+
+  .alt-num {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .alt-card-body h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: #fff;
+  }
+
+  .alt-card-body p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.8; }
+
+  .alt-stops {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .alt-stop {
+    border: 1px solid rgba(212,160,23,0.3);
+    color: rgba(255,255,255,0.6);
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    letter-spacing: 1px;
+  }
+
+  /* ─── TIPS ─── */
+  .tips-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .tip-card {
+    padding: 1.5rem;
+    border-top: 3px solid var(--vermillion);
+    background: var(--warm-white);
+  }
+
+  .tip-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .tip-card h4 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .tip-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--deep-red);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 2.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+
+  footer strong { color: var(--gold); }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(26,26,46,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(192,57,43,0.3);
+    transform: translateY(-100%);
+    animation: navIn 0.6s 0.8s ease forwards;
+  }
+
+  @keyframes navIn {
+    to { transform: translateY(0); }
+  }
+
+  .nav-logo {
+    font-family: 'ZCOOL XiaoWei', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+  }
+
+  .nav-links { display: flex; gap: 2rem; }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ─── OVERVIEW ─── */
+  .overview-strip {
+    background: var(--vermillion);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .ov-item {
+    padding: 1.8rem 3rem;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .ov-item:last-child { border-right: none; }
+
+  .ov-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .ov-label { font-size: 0.75rem; letter-spacing: 2px; opacity: 0.85; }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .ov-item { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+    .timeline { padding-left: 2rem; }
+  }
+
+  @media (max-width: 900px) {
+    .section,
+    .tips-section,
+    .alternatives-section {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    .day-header-overlay h2 {
+      font-size: 2rem;
+      line-height: 1.35;
+    }
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      padding: 0.85rem 1rem;
+    }
+
+    .nav-logo {
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+    }
+
+    .hero {
+      height: auto;
+      min-height: 84vh;
+      padding: 5.5rem 0 3rem;
+    }
+
+    .hero-content {
+      padding: 1.25rem;
+    }
+
+    .hero h1 {
+      letter-spacing: 0.08em;
+    }
+
+    .hero-sub {
+      letter-spacing: 0.18em;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-welcome {
+      letter-spacing: 0.15em;
+      line-height: 1.5;
+      padding: 0.5rem 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-dates {
+      font-size: 0.76rem;
+      gap: 0.6rem;
+      letter-spacing: 1px;
+      flex-wrap: wrap;
+    }
+
+    .scroll-hint {
+      bottom: 1.1rem;
+      font-size: 0.62rem;
+      letter-spacing: 1px;
+    }
+
+    .section {
+      padding-top: 3.3rem;
+      padding-bottom: 3.3rem;
+    }
+
+    .section-label {
+      margin-bottom: 1.7rem;
+    }
+
+    .section-label h2 {
+      font-size: 1.3rem;
+      line-height: 1.5;
+    }
+
+    .section-label .day-num {
+      font-size: 3.2rem;
+      right: 0;
+      top: -0.5rem;
+    }
+
+    .day-header {
+      height: 220px;
+      margin-bottom: 1.8rem;
+    }
+
+    .day-header-overlay {
+      padding: 1.2rem;
+    }
+
+    .day-header-overlay h2 {
+      font-size: 1.45rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .day-header-overlay p {
+      font-size: 0.8rem;
+      line-height: 1.6;
+      letter-spacing: 0;
+    }
+
+    .day-badge {
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.65rem;
+    }
+
+    .timeline {
+      padding-left: 2.15rem;
+    }
+
+    .timeline::before {
+      left: 8px;
+    }
+
+    .timeline-dot {
+      left: -2.15rem;
+      width: 18px;
+      height: 18px;
+      font-size: 0.56rem;
+      top: 4px;
+    }
+
+    .timeline-item {
+      margin-bottom: 1.7rem;
+    }
+
+    .timeline-time {
+      font-size: 0.68rem;
+      letter-spacing: 1px;
+    }
+
+    .card-body {
+      padding: 1rem;
+    }
+
+    .card-image {
+      height: 180px;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+    }
+
+    .card p {
+      font-size: 0.8rem;
+      line-height: 1.65;
+    }
+
+    .card-meta {
+      flex-wrap: wrap;
+      gap: 0.5rem 0.8rem;
+      font-size: 0.7rem;
+    }
+
+    .food-section {
+      padding: 1.3rem 1rem;
+      margin: 1.4rem 0;
+      border-left-width: 3px;
+    }
+
+    .food-section h3 {
+      margin-bottom: 1rem;
+      font-size: 1.02rem;
+    }
+
+    .food-grid {
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+    }
+
+    .transport-box {
+      padding: 0.85rem 0.9rem;
+      font-size: 0.78rem;
+      line-height: 1.65;
+      margin: 1.2rem 0;
+    }
+
+    .alternatives-section {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    .alt-title {
+      font-size: 1.7rem;
+      line-height: 1.35;
+    }
+
+    .alt-desc {
+      margin-bottom: 2rem;
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    .alt-cards {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+
+    .alt-card-img {
+      height: 180px;
+    }
+
+    .alt-card-body {
+      padding: 1rem;
+    }
+
+    .alt-card-body h3 {
+      font-size: 1.05rem;
+    }
+
+    .tips-section {
+      padding-top: 3.3rem;
+      padding-bottom: 3.3rem;
+    }
+
+    .tips-grid {
+      margin-top: 1.4rem;
+      gap: 1rem;
+    }
+
+    .tip-card {
+      padding: 1rem;
+    }
+
+    footer {
+      padding: 1.5rem 1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-tag {
+      letter-spacing: 2px;
+      font-size: 0.65rem;
+      padding: 5px 12px;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 15vw, 3.2rem);
+      margin-bottom: 0.35rem;
+    }
+
+    .hero-sub {
+      font-size: 0.84rem;
+    }
+
+    .overview-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .ov-item {
+      padding: 0.9rem 0.8rem;
+      border-right: 1px solid rgba(255,255,255,0.2);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .ov-item:nth-child(2n) {
+      border-right: none;
+    }
+
+    .ov-item:nth-last-child(-n+2) {
+      border-bottom: none;
+    }
+
+    .ov-num {
+      font-size: 1.5rem;
+    }
+
+    .ov-label {
+      font-size: 0.68rem;
+      letter-spacing: 1px;
+    }
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    .card:hover,
+    .food-card:hover,
+    .alt-card:hover,
+    .day-header:hover img,
+    .card:hover .card-image,
+    .food-card:hover img,
+    .alt-card:hover .alt-card-img {
+      transform: none;
+      box-shadow: none;
+      filter: none;
+      border-color: inherit;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">北京 · 五一</div>
+  <div class="nav-links">
+    <a href="#day1">第一天</a>
+    <a href="#day2">第二天</a>
+    <a href="#alternatives">备选方案</a>
+    <a href="#tips">旅行贴士</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">2025 · 五一黄金周</div>
+    <h1>北京</h1>
+    <p class="hero-sub">千年帝都 · 悠然两日</p>
+    <p class="hero-welcome">娄子乔<br>北京欢迎您</p>
+    <div class="hero-dates">
+      <span>5月1日</span>
+      <span style="opacity:0.4">—</span>
+      <span>5月2日</span>
+    </div>
+  </div>
+  <div class="scroll-hint">向下滚动</div>
+</div>
+
+<!-- OVERVIEW STRIP -->
+<div class="overview-strip">
+  <div class="ov-item">
+    <div class="ov-num">2</div>
+    <div class="ov-label">天行程</div>
+  </div>
+  <div class="ov-item">
+    <div class="ov-num">6</div>
+    <div class="ov-label">核心景点</div>
+  </div>
+  <div class="ov-item">
+    <div class="ov-num">8+</div>
+    <div class="ov-label">美食推荐</div>
+  </div>
+  <div class="ov-item">
+    <div class="ov-num">3</div>
+    <div class="ov-label">备选方案</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ DAY 1 ════════════════════════════════ -->
+<div id="day1" style="background: var(--cream);">
+<div class="section">
+  <div style="position:relative;">
+    <div class="section-label">
+      <h2>第一天：帝都皇城漫步</h2>
+    </div>
+    <span class="day-num" style="position:absolute;right:0;top:-1rem;font-family:'Noto Serif SC',serif;font-size:5rem;font-weight:900;color:rgba(192,57,43,0.06);line-height:1;">01</span>
+  </div>
+
+  <div class="day-header">
+    <img referrerpolicy="no-referrer" src="https://commons.wikimedia.org/wiki/Special:FilePath/The_Forbidden_City_-_View_from_Coal_Hill.jpg?width=1200" alt="故宫" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/beijing1/1200/500'">
+    <div class="day-header-overlay">
+      <div class="day-badge">DAY ONE · 5月1日</div>
+      <h2>天安门 · 故宫 · 景山 · 王府井</h2>
+      <p>沿着中轴线，感受千年皇城气息，节奏轻松，可随时驻足</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+
+    <!-- 9:00 天安门 -->
+    <div class="timeline-item">
+      <div class="timeline-dot dot-attraction">景</div>
+      <div class="timeline-time">09:00 — 上午</div>
+      <div class="card">
+        <div class="card-overflow">
+          <img referrerpolicy="no-referrer" class="card-image" src="天安门.jpg" alt="天安门广场" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/tiananmen/800/500'">
+        </div>
+        <div class="card-body">
+          <span class="card-type type-attraction">景点</span>
+          <h3>天安门广场</h3>
+          <p>世界上最大的城市广场，五星红旗在晨曦中迎风飘扬，气势磅礴。五一期间花团锦簇，拍照留念的绝佳地点。无需购票，可自由参观，建议提前预约参观天安门城楼。</p>
+          <div class="card-meta">
+            <span>⏱ 约1小时</span>
+            <span>🎫 免费（城楼需购票）</span>
+            <span>📍 东城区</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10:00 故宫 -->
+    <div class="timeline-item">
+      <div class="timeline-dot dot-attraction">景</div>
+      <div class="timeline-time">10:00 — 上午至下午</div>
+      <div class="card">
+        <div class="card-overflow">
+          <img referrerpolicy="no-referrer" class="card-image" src="故宫.jpeg" alt="故宫" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/beijing1/800/500'">
+        </div>
+        <div class="card-body">
+          <span class="card-type type-attraction">景点</span>
+          <h3>故宫博物院（紫禁城）</h3>
+          <p>世界上规模最大、保存最完整的古代宫殿建筑群。红墙黄瓦、雕梁画栋，每一步都是历史。五一人流较多，建议走"西路"（慈宁宫花园区域）相对清静，悠然欣赏。</p>
+          <div class="card-meta">
+            <span>⏱ 约2.5小时</span>
+            <span>🎫 ¥60</span>
+            <span>⚠️ 需提前在官网实名预约</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 午餐 -->
+    <div class="timeline-item">
+      <div class="timeline-dot dot-food">食</div>
+      <div class="timeline-time">12:30 — 午餐</div>
+      <div class="food-section">
+        <h3>🍜 午餐推荐 · 故宫附近</h3>
+        <div class="food-grid">
+          <div class="food-card">
+            <img referrerpolicy="no-referrer" src="烤鸭1.jpg" alt="烤鸭" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/烤鸭/400/300'">
+            <div class="food-card-body">
+              <h4>便宜坊烤鸭</h4>
+              <p>创立于1416年，焖炉烤鸭鼻祖。皮酥肉嫩，搭配薄饼、黄瓜丝、甜面酱，滋味醇厚。</p>
+            </div>
+          </div>
+          <div class="food-card">
+            <img referrerpolicy="no-referrer" src="炸酱面.jpeg" alt="炸酱面" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/炸酱面/400/300'">
+            <div class="food-card-body">
+              <h4>老北京炸酱面</h4>
+              <p>地道北京味道，浓郁肉酱配上劲道面条，搭配黄瓜丝、豆芽、青豆，简单却回味无穷。</p>
+            </div>
+          </div>
+          <div class="food-card">
+            <img referrerpolicy="no-referrer" src="涮羊肉.jpg" alt="涮羊肉" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/涮羊肉/400/300'">
+            <div class="food-card-body">
+              <h4>东来顺涮羊肉</h4>
+              <p>百年老字号，手切羊肉片薄如纸。铜锅清汤，蘸料讲究，是地道的北京涮肉体验。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14:00 景山公园 -->
+    <div class="timeline-item">
+      <div class="timeline-dot dot-attraction">景</div>
+      <div class="timeline-time">14:00 — 下午</div>
+      <div class="card">
+        <div class="card-overflow">
+          <img referrerpolicy="no-referrer" class="card-image" src="景山公园.jpeg" alt="景山公园" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/jingshan/800/500'">
+        </div>
+        <div class="card-body">
+          <span class="card-type type-attraction">景点</span>
+          <h3>景山公园</h3>
+          <p>紫禁城正后方的皇家御苑，登顶万春亭俯瞰故宫全景，是拍摄故宫最佳角度。五月丁香盛开，花香四溢，是放松散步的绝佳去处，节奏轻松，老少皆宜。</p>
+          <div class="card-meta">
+            <span>⏱ 约1.5小时</span>
+            <span>🎫 ¥2</span>
+            <span>📷 俯瞰故宫全景绝佳</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 交通 -->
+    <div class="transport-box">
+      <span class="icon">🚇</span>
+      <div><strong>交通提示：</strong>景山公园 → 王府井，步行约20分钟，或乘地铁1号线（天安门东→王府井，1站），非常方便。五一期间建议以步行+地铁为主，避开地面拥堵。</div>
+    </div>
+
+    <!-- 16:00 王府井 -->
+    <div class="timeline-item">
+      <div class="timeline-dot dot-attraction">景</div>
+      <div class="timeline-time">16:00 — 傍晚</div>
+      <div class="card">
+        <div class="card-overflow">
+          <img referrerpolicy="no-referrer" class="card-image" src="王府井.jpg" alt="王府井" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/wangfujing/800/500'">
+        </div>
+        <div class="card-body">
+          <span class="card-type type-attraction">景点</span>
+          <h3>王府井步行街 & 小吃街</h3>
+          <p>北京最著名的商业街，全聚德烤鸭旗舰店坐镇，旁边的王府井小吃街汇聚老北京各类特色小吃。傍晚灯光亮起，人声鼎沸，氛围热闹而不失趣味，随走随吃最惬意。</p>
+          <div class="card-meta">
+            <span>⏱ 随意逛，约2小时</span>
+            <span>🎫 免费</span>
+            <span>🛍 购物+美食</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 晚餐 -->
+    <div class="timeline-item">
+      <div class="timeline-dot dot-food">食</div>
+      <div class="timeline-time">18:30 — 晚餐</div>
+      <div class="food-section">
+        <h3>🦆 晚餐推荐 · 王府井周边</h3>
+        <div class="food-grid">
+          <div class="food-card">
+            <img referrerpolicy="no-referrer" src="全聚德.jpg" alt="全聚德烤鸭" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/全聚德烤鸭/400/300'">
+            <div class="food-card-body">
+              <h4>全聚德烤鸭（王府井店）</h4>
+              <p>1864年创立，挂炉烤鸭金字招牌。片皮鸭色泽红润，皮脆肉滑，是北京必吃之选。建议提前预约。</p>
+            </div>
+          </div>
+          <div class="food-card">
+            <img referrerpolicy="no-referrer" src="爆肚.jpg" alt="糖葫芦" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/糖葫芦/400/300'">
+            <div class="food-card-body">
+              <h4>王府井小吃街（随吃随走）</h4>
+              <p>糖葫芦、爆肚、卤煮火烧、驴打滚……边走边吃，感受最市井的北京味道，晚餐可轻食形式进行。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<hr class="divider" style="margin:0;">
+
+<!-- ════════════════════════════════ DAY 2 ════════════════════════════════ -->
+<div id="day2" style="background: var(--warm-white);">
+<div class="section">
+  <div style="position:relative;">
+    <div class="section-label">
+      <h2>第二天：自然人文，舒适漫游</h2>
+    </div>
+    <span class="day-num" style="position:absolute;right:0;top:-1rem;font-family:'Noto Serif SC',serif;font-size:5rem;font-weight:900;color:rgba(192,57,43,0.06);line-height:1;">02</span>
+  </div>
+
+  <div class="day-header">
+    <img referrerpolicy="no-referrer" src="https://commons.wikimedia.org/wiki/Special:FilePath/Summer_Palace_in_Beijing.jpg?width=1200" alt="颐和园" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/palace/1200/500'">
+    <div class="day-header-overlay">
+      <div class="day-badge">DAY TWO · 5月2日</div>
+      <h2>天坛 · 前门 · 南锣鼓巷 · 颐和园</h2>
+      <p>从市中心到皇家园林，感受北京的多元与静谧，轻松收尾</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+
+    <!-- 9:00 天坛 -->
+    <div class="timeline-item">
+      <div class="timeline-dot dot-attraction">景</div>
+      <div class="timeline-time">09:00 — 上午</div>
+      <div class="card">
+        <div class="card-overflow">
+          <img referrerpolicy="no-referrer" class="card-image" src="天坛.jpeg" alt="天坛" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/tiantan/800/500'">
+        </div>
+        <div class="card-body">
+          <span class="card-type type-attraction">景点</span>
+          <h3>天坛公园</h3>
+          <p>明清两代皇帝祭天之所，祈年殿三层蓝瓦圆顶是北京最标志性的建筑之一。公园绿意盎然，清晨可见老北京人在此打太极、练嗓子，极具生活气息，散步体验极佳。</p>
+          <div class="card-meta">
+            <span>⏱ 约2小时</span>
+            <span>🎫 ¥15（联票¥35）</span>
+            <span>🌿 清晨最宜</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11:00 前门大街 -->
+    <div class="timeline-item">
+      <div class="timeline-dot dot-attraction">景</div>
+      <div class="timeline-time">11:00 — 中午前</div>
+      <div class="card">
+        <div class="card-overflow">
+          <img referrerpolicy="no-referrer" class="card-image" src="前门大街.jpg" alt="前门大街" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/qianmen/800/500'">
+        </div>
+        <div class="card-body">
+          <span class="card-type type-attraction">景点</span>
+          <h3>前门大街 & 大栅栏</h3>
+          <p>百年老字号汇聚之地，同仁堂药店、张一元茶叶、内联升布鞋……充满老北京韵味。大栅栏胡同弯弯曲曲，随意穿行，体验原汁原味的胡同文化，不必赶时间。</p>
+          <div class="card-meta">
+            <span>⏱ 约1.5小时</span>
+            <span>🎫 免费</span>
+            <span>🏮 老字号林立</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 交通 -->
+    <div class="transport-box">
+      <span class="icon">🚇</span>
+      <div><strong>交通提示：</strong>前门大街 → 南锣鼓巷，乘地铁2号线至鼓楼大街，再步行或换乘6号线至南锣鼓巷站，全程约25分钟。沿途也可搭乘共享单车，体验北京街头风情。</div>
+    </div>
+
+    <!-- 午餐 -->
+    <div class="timeline-item">
+      <div class="timeline-dot dot-food">食</div>
+      <div class="timeline-time">12:30 — 午餐</div>
+      <div class="food-section">
+        <h3>🥘 午餐推荐 · 前门 / 南锣鼓巷</h3>
+        <div class="food-grid">
+          <div class="food-card">
+            <img referrerpolicy="no-referrer" src="豆汁.jpg" alt="豆汁" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/豆汁/400/300'">
+            <div class="food-card-body">
+              <h4>老磁器口豆汁店</h4>
+              <p>豆汁、焦圈、咸菜，地道北京早餐三件套。豆汁酸臭独特，真正的老北京都爱这口，值得一试。</p>
+            </div>
+          </div>
+          <div class="food-card">
+            <img referrerpolicy="no-referrer" src="爆肚" alt="卤煮" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/卤煮/400/300'">
+            <div class="food-card-body">
+              <h4>小肠陈卤煮火烧</h4>
+              <p>北京最接地气的小吃，猪小肠、豆腐、火烧在老汤里炖煮，浓香扑鼻，是真正的北京味道。</p>
+            </div>
+          </div>
+          <div class="food-card">
+            <img referrerpolicy="no-referrer" src="奶酪.jpg" alt="北京小吃" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/北京小吃/400/300'">
+            <div class="food-card-body">
+              <h4>南锣鼓巷创意小食</h4>
+              <p>奶酪魏的宫廷奶酪、文宇奶酪……在网红小吃中寻一份清新与甜蜜，边走边吃，轻松午餐。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14:00 南锣鼓巷 -->
+    <div class="timeline-item">
+      <div class="timeline-dot dot-attraction">景</div>
+      <div class="timeline-time">14:00 — 下午</div>
+      <div class="card">
+        <div class="card-overflow">
+          <img referrerpolicy="no-referrer" class="card-image" src="南锣.png" alt="南锣鼓巷" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/hutong/800/500'">
+        </div>
+        <div class="card-body">
+          <span class="card-type type-attraction">景点</span>
+          <h3>南锣鼓巷 & 周边胡同</h3>
+          <p>北京最具文艺气息的胡同街区，青砖灰瓦间藏着独立书店、手作小店、特色咖啡馆。沿胡同漫步，偶遇四合院，感受老北京的市井生活与当代文艺气息的碰撞，极为惬意。</p>
+          <div class="card-meta">
+            <span>⏱ 约1.5小时</span>
+            <span>🎫 免费</span>
+            <span>☕ 咖啡+文创店云集</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 交通 -->
+    <div class="transport-box">
+      <span class="icon">🚇</span>
+      <div><strong>交通提示：</strong>南锣鼓巷 → 颐和园，乘地铁6号线西行至海淀五路居，换乘4号线至北宫门站，全程约50分钟，建议提前出发，留充足时间游览颐和园。</div>
+    </div>
+
+    <!-- 16:00 颐和园 -->
+    <div class="timeline-item">
+      <div class="timeline-dot dot-attraction">景</div>
+      <div class="timeline-time">16:00 — 傍晚</div>
+      <div class="card">
+        <div class="card-overflow">
+          <img referrerpolicy="no-referrer" class="card-image" src="颐和园.jpeg" alt="颐和园" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/palace/800/500'">
+        </div>
+        <div class="card-body">
+          <span class="card-type type-attraction">景点</span>
+          <h3>颐和园</h3>
+          <p>中国现存规模最大的皇家园林，昆明湖波光粼粼，万寿山层峦叠翠，长廊彩绘绵延728米。下午四点后人流渐少，夕阳映照湖面，美不胜收。沿湖慢走，忘却时间，是完美的旅程收尾。</p>
+          <div class="card-meta">
+            <span>⏱ 约2小时</span>
+            <span>🎫 ¥30（旺季）</span>
+            <span>🌅 夕阳时分最美</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 晚餐 -->
+    <div class="timeline-item">
+      <div class="timeline-dot dot-food">食</div>
+      <div class="timeline-time">18:30 — 晚餐</div>
+      <div class="food-section">
+        <h3>🌙 晚餐推荐 · 海淀 / 回程路上</h3>
+        <div class="food-grid">
+          <div class="food-card">
+            <img referrerpolicy="no-referrer" src="大董.jpeg" alt="北京烤鸭" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/北京烤鸭/400/300'">
+            <div class="food-card-body">
+              <h4>大董烤鸭（意境菜）</h4>
+              <p>创新与传统融合，烤鸭皮脆骨酥、几乎无脂，搭配精美摆盘，是送给自己的旅程终章大餐。</p>
+            </div>
+          </div>
+          <div class="food-card">
+            <img referrerpolicy="no-referrer" src="麻豆腐.jpg" alt="胡同小馆" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/胡同小馆/400/300'">
+            <div class="food-card-body">
+              <h4>胡同深处老北京小馆</h4>
+              <p>芝麻酱拌面、麻豆腐、爆肚冯……找一家胡同深处的小馆，慢慢吃，慢慢聊，为旅程画上句号。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ════════════════════════════════ ALTERNATIVES ════════════════════════════════ -->
+<div id="alternatives" class="alternatives-section">
+  <div class="alt-inner">
+    <div class="alt-tag">ALTERNATIVE PLANS</div>
+    <h2 class="alt-title">三套备选方案</h2>
+    <p class="alt-desc">如主线行程已游览，或偏好不同风格，可选择以下方案替换或延伸</p>
+
+    <div class="alt-cards">
+
+      <!-- 方案A -->
+      <div class="alt-card">
+        <div class="alt-card-img-wrap">
+          <img referrerpolicy="no-referrer" class="alt-card-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/The_Great_Wall_of_China_at_Jinshanling-edit.jpg?width=600" alt="长城" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/greatwall/600/500'">
+        </div>
+        <div class="alt-card-body">
+          <div class="alt-num">PLAN A · 壮阔山河</div>
+          <h3>慕田峪长城 · 居庸关</h3>
+          <p>专门用一天征服长城。慕田峪人流较八达岭少，风景更原始壮观，缆车上山轻松省力。春季山花烂漫，绿意覆墙，是五一登城的最佳选择。可搭配明十三陵，感受明代皇陵的宏伟。</p>
+          <div class="alt-stops">
+            <span class="alt-stop">慕田峪长城</span>
+            <span class="alt-stop">缆车索道</span>
+            <span class="alt-stop">明十三陵</span>
+            <span class="alt-stop">怀柔美食</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 方案B -->
+      <div class="alt-card">
+        <div class="alt-card-img-wrap">
+          <img referrerpolicy="no-referrer" class="alt-card-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/798_Art_Zone_2.jpg?width=600" alt="798艺术区" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/art798/600/500'">
+        </div>
+        <div class="alt-card-body">
+          <div class="alt-num">PLAN B · 潮流文艺</div>
+          <h3>798艺术区 · 三里屯 · 簋街</h3>
+          <p>感受北京的时尚与创意。798前身是国营工厂，如今蜕变为当代艺术地标，涂鸦与装置艺术随处可见。下午移步三里屯，感受北京最国际化的街区氛围，晚上在簋街大快朵颐麻辣小龙虾。</p>
+          <div class="alt-stops">
+            <span class="alt-stop">798艺术区</span>
+            <span class="alt-stop">三里屯Village</span>
+            <span class="alt-stop">工体附近</span>
+            <span class="alt-stop">簋街夜食</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 方案C -->
+      <div class="alt-card">
+        <div class="alt-card-img-wrap">
+          <img referrerpolicy="no-referrer" class="alt-card-img" src="鸟巢.jpeg">
+        </div>
+        <div class="alt-card-body">
+          <div class="alt-num">PLAN C · 现代北京</div>
+          <h3>奥林匹克公园 · 鸟巢 · 中关村</h3>
+          <p>探索现代北京的另一面。奥林匹克公园免费开放，鸟巢与水立方在日光下熠熠生辉，宏伟震撼。可登望京SOHO俯瞰城市天际线，再去中关村感受中国硅谷的创新活力，知春路美食街解锁多国料理。</p>
+          <div class="alt-stops">
+            <span class="alt-stop">鸟巢水立方</span>
+            <span class="alt-stop">国家游泳中心</span>
+            <span class="alt-stop">望京SOHO</span>
+            <span class="alt-stop">中关村</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ TIPS ════════════════════════════════ -->
+<div id="tips" class="tips-section">
+  <div class="section-label">
+    <h2>旅行贴士</h2>
+  </div>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-icon">🎫</div>
+      <h4>提前预约</h4>
+      <p>故宫、天坛等热门景点五一期间须提前通过官方小程序实名预约购票，建议出发前7天购票。</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🚇</div>
+      <h4>交通出行</h4>
+      <p>地铁是最便捷的出行方式，北京地铁网络密集，全程刷手机即可。五一地面交通堵，尽量避开自驾。</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🌞</div>
+      <h4>天气穿着</h4>
+      <p>北京五一平均气温18-26°C，昼夜温差大，早晚需备薄外套。注意防晒，户外活动建议涂防晒霜。</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">⏰</div>
+      <h4>错峰游览</h4>
+      <p>热门景点建议开门即入，尽早出发。午后1-3点人流最旺，可安排餐饮或室内休息，避开高峰。</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">💰</div>
+      <h4>消费预算</h4>
+      <p>两日行程人均约800-1200元（含餐饮¥300、景点¥150、交通¥80、购物/住宿另计）。</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">📱</div>
+      <h4>实用APP</h4>
+      <p>故宫博物院官网、北京地铁APP、高德地图、大众点评。建议下载离线地图，景区内信号或不稳。</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>🏯 <strong>北京五一旅行攻略</strong> &nbsp;·&nbsp; 慢慢走，细细品，才是旅行的意义</p>
+  <p style="margin-top:0.5rem;font-size:0.72rem;opacity:0.5;">行程仅供参考，实际游玩请根据个人体力与偏好灵活调整 · 祝旅途愉快</p>
+</footer>
+
+<script>
+  // Intersection observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.style.opacity = '1';
+        el.target.style.transform = 'translateX(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.timeline-item').forEach(item => {
+    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(item);
+  });
+
+  // Card hover parallax subtle effect
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `translateY(-3px) rotateX(${-y * 2}deg) rotateY(${x * 2}deg)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+    });
+  });
+</script>
+
+</body>
+</html>
